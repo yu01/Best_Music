@@ -6,4 +6,11 @@ class TencetController < ApplicationController
     @posts = Post.order(:created_at).reverse_order
   end
 
+  def show 
+   @post = Post.new
+   @post.title = params[:title]
+   @post.url = params[:url]
+   @post.tags = params[:tags]
+  end
+
 end

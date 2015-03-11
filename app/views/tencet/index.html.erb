@@ -22,7 +22,10 @@
         <td><%= post.tags %></td>
         <td><%= post.vote %></td>
         <td><%= post.suit %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+
+        <td><%= link_to 'Show', :controller => "tencet", :action => "show", :title => post.title, :url => post.url, :tags => post.tags %></td>
+
+        <td><%= link_to 'Edit', post_path(post) %></td>
         <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
