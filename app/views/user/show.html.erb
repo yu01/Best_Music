@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<!--<iframe width="560" height="315" src="http://www.youtube.com/embed/bmXumtgwtak?rel=0" frameborder="0" allowfullscreen></iframe>-->
+<%= link_to 'New Post', user_add_path %>
+
+ <% @posts.each do |post| %>
+
+  <% if post.suit %>
+
+    <div class="post">
+
+    <%= post.title %>
+
+    <iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe>
+
+    <%= post.tags %>
+
+    <%= post.vote %>
+
+    </div>
+
+  <% end %>
+
+ <% end %>
+
+

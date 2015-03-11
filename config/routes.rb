@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'user/add'
+
+  get 'user/show'
+
   get 'tencet/index'
 
   resources :posts
 
-  root 'posts#index'
+  resources :user
+
+  root 'user#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
