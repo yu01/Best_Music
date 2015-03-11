@@ -1,0 +1,2 @@
+module TencetHelper
+end

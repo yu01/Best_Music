@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tencet/index'
+
   resources :posts
 
   root 'posts#index'
