@@ -28,6 +28,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    @post.tags = getTags(@post.title)
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to user_show_path, notice: 'Ваше видео появится в списке после модерации' }
@@ -38,6 +40,35 @@ class PostsController < ApplicationController
       end
     end
   end
+
+  
+  def getTags(title)
+
+    index = title.index('-')
+
+    if index == nil
+      return ""
+    end
+
+    nameArtist = title[0..index - 1].strip
+
+    #nameArtist = "Jungle Rot"
+
+    Rockstar.lastfm = {
+      :api_key => "d600f9fe67a8a859de883023e7ad29a6", 
+      :api_secret => "adebc8c3ece7e08cfa1bb66ecafd0ba6"}
+
+    artist = Rockstar::Artist.new(nameArtist, :include_info => true)
+
+    @tags = ""
+
+    artist.tags[0..2].each { |tag| @tags += tag + ", " }
+
+    @tags.chop.chop
+
+  end
+
+
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
