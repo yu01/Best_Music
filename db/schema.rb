@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311043019) do
+ActiveRecord::Schema.define(version: 20150312114227) do
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.string   "tags"
-    t.boolean  "suit"
-    t.integer  "vote"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "suit",       default: false
+    t.integer  "vote",       default: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
