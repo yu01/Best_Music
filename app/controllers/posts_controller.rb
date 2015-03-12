@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to user_show_path, notice: 'Ваше видео появится в списке после модерации' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to tencet_index_path, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
