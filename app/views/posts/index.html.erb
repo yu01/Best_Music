@@ -7,17 +7,19 @@
 
   <% if post.suit %>
 
-    <div class="post">
+    <table class="post">
+      <tr> <td class="title"> <%= post.title %> </td></tr>
 
-    <%= post.title %>
+      <tr><td><iframe width="740" height="420" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 
-    <iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe>
+     <tr> 
+      <td class="tags"><%= post.tags %> </td>
 
-    <%= post.tags %>
+      <td class="vote"><%= post.vote %> </td> 
+     </tr>
 
-    <%= post.vote %>
 
-    </div>
+    </table>
 
   <% end %>
 
