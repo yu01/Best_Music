@@ -21,6 +21,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @post = getpost(@post)
+
   end
 
   # POST /posts
@@ -28,11 +30,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    @post.title = generateTitle(@post.title)
-
-    @post.url = generateURL(@post.url)
-
-    @post.tags = getTags(@post.title)
+    @post = getpost(@post)
 
     respond_to do |format|
       if @post.save
@@ -64,16 +62,44 @@ class PostsController < ApplicationController
     index = url.index('=')
 
     if index == nil
-      return ""
+
+      path = 'embed/'
+
+      index = url.index(path)
+
+      if index == nil
+        return ""
+
+      else
+        
+        index += + path.size
+
+      end
+
+    else
+      
+      index += 1
     end
     
     n = url.length
 
     returnUrl = ""
 
-    returnUrl = "https://www.youtube.com/embed/" + url[index + 1..n]
+    returnUrl = "https://www.youtube.com/embed/" + url[index..n]
 
     
+  end
+
+  def getpost(post)
+
+    post.title = generateTitle(post.title)
+
+    post.url = generateURL(post.url)
+
+    post.tags = getTags(post.title)
+
+    return post
+
   end
 
   
