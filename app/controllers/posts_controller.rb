@@ -97,6 +97,10 @@ class PostsController < ApplicationController
 
     @tags = ""
 
+    if artist.tags == nil
+      return ""
+    end
+
     artist.tags[0..2].each { |tag| @tags += tag + ", " }
 
     @tags.chop.chop
