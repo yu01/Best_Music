@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'user/show'
 
-  get 'tencet/index'
+  get '/admin', to:'tencet#index'
 
   get 'tencet/show'
 
