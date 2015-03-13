@@ -28,6 +28,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    @post.url = generatingURL(@post.url)
+
     @post.tags = getTags(@post.title)
 
     respond_to do |format|
@@ -39,6 +41,23 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def generatingURL(url)
+
+    index = url.index('=')
+
+    if index == nil
+      return ""
+    end
+    
+    n = url.length
+
+    returnUrl = ""
+
+    returnUrl = "https://www.youtube.com/embed/" + url[index + 1..n]
+
+    
   end
 
   
