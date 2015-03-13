@@ -28,7 +28,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    @post.url = generatingURL(@post.url)
+    @post.title = generateTitle(@post.title)
+
+    @post.url = generateURL(@post.url)
 
     @post.tags = getTags(@post.title)
 
@@ -43,7 +45,21 @@ class PostsController < ApplicationController
     end
   end
 
-  def generatingURL(url)
+  def generateTitle(title)
+     
+    words =  @post.title.split
+
+    newtitle = ""
+
+    words.each {|word| newtitle += word.capitalize + " "}
+
+    @post.title = newtitle
+
+    @post.title
+
+  end
+
+  def generateURL(url)
 
     index = url.index('=')
 
@@ -94,7 +110,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to admin_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
