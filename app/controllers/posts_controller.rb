@@ -135,12 +135,12 @@ class PostsController < ApplicationController
 
   def suit
 
-    @post = params[:post]
+    @post = Post.find(params[:id])
 
     @post.suit = true
 
     if @post.save
-      redirect_to tencet_show_path
+      redirect_to admin_path
     end
 
   end
