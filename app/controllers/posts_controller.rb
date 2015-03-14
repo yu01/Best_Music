@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order(:created_at).reverse_order
+    @posts = Post.order(:updated_at).reverse_order
   end
 
   # GET /posts/1
@@ -130,6 +130,18 @@ class PostsController < ApplicationController
     artist.tags[0..2].each { |tag| @tags += tag + ", " }
 
     @tags.chop.chop
+
+  end
+
+  def suit
+
+    @post = params[:post]
+
+    @post.suit = true
+
+    if @post.save
+      redirect_to tencet_show_path
+    end
 
   end
 

@@ -5,7 +5,7 @@ class UserController < ApplicationController
   end
 
   def show
-    @posts = Post.order(:created_at).reverse_order
+    @posts = Post.order(:updated_at).reverse_order
 
   end
 
