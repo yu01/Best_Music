@@ -20,7 +20,7 @@
 
  <% @posts.each do |post| %>
 
-  <% if post.suit %>
+  <% if post.suit && post.created_at < Time.now %>
 
     <table class="post">
       <tr> <td><%= post.title %> </td></tr>

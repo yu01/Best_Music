@@ -148,6 +148,18 @@ class PostsController < ApplicationController
 
   end
 
+  def day
+
+    @post = Post.find(params[:id])
+
+    @post.created_at += 60 * 60 * 24
+
+    if @post.save
+      redirect_to admin_path
+    end
+
+  end
+
 
 
   # PATCH/PUT /posts/1

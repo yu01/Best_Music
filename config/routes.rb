@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     put :suit, on: :member
+    put :day, on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
