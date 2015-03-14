@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/admin', to:'tencet#index'
 
-  get 'tencet/show'
+  get '/admin/all', to:'tencet#all'
 
   resources :posts do
     put :suit, on: :member

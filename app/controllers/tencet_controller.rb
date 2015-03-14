@@ -6,4 +6,9 @@ class TencetController < ApplicationController
     @posts = Post.order(:created_at)
 
   end
+
+  def all
+    @posts = Post.order(:created_at).reverse_order
+
+  end
 end
