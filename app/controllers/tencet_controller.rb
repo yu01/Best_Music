@@ -5,10 +5,22 @@ class TencetController < ApplicationController
   def index
     @posts = Post.order(:created_at)
 
+    @countPosts = 0
+
+    @posts.each do |post|
+      if !post.suit
+         @countPosts += 1
+
+      end
+
+    end
+
+    
+
   end
 
   def all
-    @posts = Post.order(:created_at).reverse_order
+    @posts = Post.order(:updated_at).reverse_order
 
   end
 end

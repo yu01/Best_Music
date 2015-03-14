@@ -2,13 +2,9 @@ Rails.application.routes.draw do
 
   root 'user#show'
 
-  get 'user/add'
-
-  get 'user/show'
+  get '/show', to:'user#show'
 
   get '/admin', to:'tencet#index'
-
-  get '/admin/all', to:'tencet#all'
 
   resources :posts do
     put :suit, on: :member
