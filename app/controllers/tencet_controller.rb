@@ -15,6 +15,16 @@ class TencetController < ApplicationController
 
     end
 
+    @countPostsDay = 0
+
+    @posts.each do |post|
+      if !post.suit && Time.now < post.created_at + 60 * 60 * 24
+         @countPostsDay += 1
+
+      end
+
+    end
+
     
 
   end

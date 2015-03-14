@@ -7,6 +7,8 @@
   <% if @countPosts != 0 %>
     <h2> Количество постов: <%= @countPosts %></h2>
 
+    <h2> Количество постов за сегодня: <%= @countPostsDay %></h2>
+
   <% end %>
 
  <% @posts.each do |post| %>
