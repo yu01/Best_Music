@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_show_path, notice: 'Ваше видео появится в списке после модерации' }
+        format.html { redirect_to show_path, notice: 'Ваше видео появится в списке после модерации' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -43,13 +43,16 @@ class PostsController < ApplicationController
     end
   end
 
+  version = ">= 0"
+  #load Gem.bin_path('railties', 'rails', version)
+
   def generateTitle(title)
      
     words =  @post.title.split
 
     newtitle = ""
 
-    words.each {|word| newtitle += word.capitalize + " "}
+    words.each {|word| newtitle += Unicode::capitalize(word) + " "}
 
     @post.title = newtitle
 
