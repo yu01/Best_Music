@@ -1,7 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <!--<iframe width="560" height="315" src="http://www.youtube.com/embed/bmXumtgwtak?rel=0" frameborder="0" allowfullscreen></iframe>-->
-<%= link_to 'New Post', user_add_path %>
+
+<div class="new-post">
+    <%= form_for Post.new do |f| %>
+
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, :autocomplete => :off%>
+      </div>
+      <div class="field">
+        <%= f.label :url %><br>
+        <%= f.text_field :url, :autocomplete => :off %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+<% end %>
+</div>
+
+<div class="posts">
 
  <% @posts.each do |post| %>
 
@@ -22,5 +41,8 @@
   <% end %>
 
  <% end %>
+
+</div>
+
 
 
