@@ -1,6 +1,8 @@
 class TencetController < ApplicationController
 
   http_basic_authenticate_with name: "tencet", password: "qk35lm"
+  
+  include TencetHelper  
 
   def index
     @posts = Post.order(:created_at)
@@ -8,7 +10,7 @@ class TencetController < ApplicationController
     @countPosts = 0
 
     @posts.each do |post|
-      if !post.suit
+      if !post.suit || getDate(post) != ""
          @countPosts += 1
 
       end
@@ -24,8 +26,6 @@ class TencetController < ApplicationController
       end
 
     end
-
-    
 
   end
 

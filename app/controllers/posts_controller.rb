@@ -1,33 +1,26 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "tencet", password: "qk35lm"
+  http_basic_authenticate_with name: "tencet", password: "qk35lm", except: :create
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = Post.order(:updated_at).reverse_order
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
   end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit
     @post = getpost(@post)
 
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
+
     @post = Post.new(post_params)
 
     @post = getpost(@post)
@@ -42,9 +35,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
-  version = ">= 0"
-  #load Gem.bin_path('railties', 'rails', version)
 
   def generateTitle(title)
      
@@ -116,8 +106,6 @@ class PostsController < ApplicationController
 
     nameArtist = title[0..index - 1].strip
 
-    #nameArtist = "Jungle Rot"
-
     Rockstar.lastfm = {
       :api_key => "d600f9fe67a8a859de883023e7ad29a6", 
       :api_secret => "adebc8c3ece7e08cfa1bb66ecafd0ba6"}
@@ -160,10 +148,6 @@ class PostsController < ApplicationController
 
   end
 
-
-
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -176,8 +160,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
@@ -187,12 +169,11 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_post
       @post = Post.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :url, :tags, :suit, :vote)
     end

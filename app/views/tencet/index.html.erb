@@ -17,8 +17,8 @@
 
     <table class="post">
       <tr> 
-          <td colspan="3"><%= post.title %> </td>
-          <td><%= getDate(post) %> </td>
+          <td colspan="2"><%= post.title %> </td>
+          <td colspan="2"><%= getDate(post) %> </td>
           
       </tr>
 
@@ -30,7 +30,12 @@
 
 
       <tr>
-        <td><%= link_to "OK", suit_post_path(post), method: :put %></td> 
+        
+       
+         <% if !post.suit %>
+           <td> <%= link_to "OK", suit_post_path(post), method: :put %></td> 
+         <% end %>
+
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to "+Day", day_post_path(post), method: :put %></td> 
