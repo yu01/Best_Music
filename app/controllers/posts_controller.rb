@@ -179,6 +179,18 @@ class PostsController < ApplicationController
 
   end
 
+  def toNew
+
+    @post = Post.find(params[:id])
+
+    @post.isNew = true
+
+    if @post.save
+      redirect_to admin_path
+    end
+
+  end
+
   def update
     respond_to do |format|
       if @post.update(post_params)

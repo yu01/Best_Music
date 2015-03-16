@@ -17,14 +17,18 @@
 
     <table class="post">
       <tr> 
-          <td colspan="2"><%= post.title %> </td>
-          <td colspan="2"><%= getDate(post) %> </td>
+          <td colspan="3"><%= post.title %> </td>
+          <td><%= getDate(post) %> </td>
+
+          <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+          <td>NEW </td>
+          <% end %>
           
       </tr>
 
-      <tr><td colspan="4"><iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
+      <tr><td colspan="5"><iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 
-     <tr> <td colspan="3"> <%= post.tags %> </td>
+     <tr> <td colspan="4"> <%= post.tags %> </td>
 
       <td><%= post.vote %> </td> </tr>
 
@@ -39,6 +43,7 @@
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to "+Day", day_post_path(post), method: :put %></td> 
+        <td><%= link_to "+New", toNew_post_path(post), method: :put %></td>
   
       </tr>
 
