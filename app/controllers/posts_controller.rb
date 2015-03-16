@@ -3,8 +3,10 @@ class PostsController < ApplicationController
 
   http_basic_authenticate_with name: "tencet", password: "qk35lm", except: :create
 
+  @posts = Post.order(:updated_at).reverse_order
+
   def index
-    @posts = Post.order(:updated_at).reverse_order
+
   end
 
   def show
@@ -19,11 +21,40 @@ class PostsController < ApplicationController
 
   end
 
+  def uniqie (post)
+    @posts = Post.order(:updated_at).reverse_order
+
+    old_post = @posts.find{|p| p.title == post.title}
+
+    if old_post
+      return Time.now > old_post.updated_at + 60 * 60 * 24 * 30 * 6
+
+    else
+      true
+
+    end
+
+  end
+
   def create
 
     @post = Post.new(post_params)
 
     @post = getpost(@post)
+
+    #getting title from Youtube API
+
+    if !uniqie(@post)
+
+      respond_to do |format|
+        format.html { redirect_to show_path, notice: 'Ваше видео появится в списке после модерации' }
+        format.json { render :show, status: :created, location: @post }
+      end
+
+      return
+    end
+
+
 
     respond_to do |format|
       if @post.save
