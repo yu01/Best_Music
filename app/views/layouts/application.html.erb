@@ -18,6 +18,10 @@ a.parentNode.insertBefore(c,a)})("reEmbed",window,document,"setupPlaylist","scri
 </head>
 <body>
 
+<% flash.each do |name, msg| %>
+<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+<% end %>
+  
 <div class="posts">
   <%= yield %>
 </div>

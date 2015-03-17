@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
-  http_basic_authenticate_with name: "tencet", password: "qk35lm", except: :create
+  http_basic_authenticate_with name: "tencet", password: "qk35lm", except: [:create, :upvote, :downvote]
 
   @posts = Post.order(:updated_at).reverse_order
 
@@ -189,6 +189,20 @@ class PostsController < ApplicationController
       redirect_to admin_path
     end
 
+  end
+  
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_to :back
+    
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    redirect_to :back
+    
   end
 
   def update

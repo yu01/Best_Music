@@ -6,6 +6,8 @@ gem 'unicode'
 
 gem 'devise', '~> 3.4.0' 
 
+gem 'acts_as_votable'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
