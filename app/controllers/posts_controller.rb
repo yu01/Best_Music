@@ -67,6 +67,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def getpost(post)
+
+    post.title = generateTitle(post.title)
+
+    post.url = generateURL(post.url)
+
+    post.tags = getTags(post.title)
+
+    return post
+
+  end
+
   def generateTitle(title)
      
     words =  @post.title.split
@@ -114,19 +126,6 @@ class PostsController < ApplicationController
     
   end
 
-  def getpost(post)
-
-    post.title = generateTitle(post.title)
-
-    post.url = generateURL(post.url)
-
-    post.tags = getTags(post.title)
-
-    return post
-
-  end
-
-  
   def getTags(title)
 
     index = title.index('-')
@@ -206,6 +205,7 @@ class PostsController < ApplicationController
   end
 
   def update
+
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to admin_path, notice: 'Post was successfully updated.' }
@@ -215,6 +215,7 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   def destroy
