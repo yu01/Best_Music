@@ -6,6 +6,8 @@ gem 'unicode'
 
 gem 'devise', '~> 3.4.0' 
 
+gem 'devise-i18n'
+
 gem 'acts_as_votable'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

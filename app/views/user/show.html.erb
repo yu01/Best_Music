@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
   <ul>
-    <li><%= link_to 'Account', edit_user_registration_path %></li>
-    <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+    <li><%= link_to 'Настройки', edit_user_registration_path %></li>
+    <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
   </ul>
 <% else %>
   <ul>
-    <li><%= link_to 'Sign up', new_user_registration_path %></li>
-    <li><%= link_to 'Sign in', new_user_session_path %></li>
+    <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
+    <li><%= link_to 'Войти', new_user_session_path %></li>
   </ul>
 <% end %>
 
@@ -15,16 +15,16 @@
     <%= form_for Post.new do |f| %>
 
       <div class="field">
-        <%= f.label :title %><br>
+        <%= f.label :Название %><br>
         <%= f.text_field :title, :autocomplete => :off%>
       </div>
       <div class="field">
-        <%= f.label :url %><br>
+        <%= f.label :Ссылка_youtube %><br>
         <%= f.text_field :url, :autocomplete => :off %>
       </div>
 
       <div class="actions">
-        <%= f.submit %>
+        <%= f.submit "OK"%>
       </div>
 <% end %>
 </div>
@@ -55,7 +55,7 @@
         
         <td>
           <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-            Upvote
+            Палец вверх
           <% end %>
         </td>
           
@@ -65,7 +65,7 @@
           
         <td>
           <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-            Downvote
+            Палец вниз
           <% end %>
         </td>
         
