@@ -51,12 +51,14 @@ ru:
       unlocked: "Ваша учётная запись разблокирована. Теперь Вы вошли в систему."
   errors:
       models:
-          user:
-            attributes:
-              email:
-                taken: "Введенный E-mail уже используется"
-              password:
+        user:
+          attributes:
+            email:
+              taken: "Введенный вами E-mail уже используется"
+              blank: "Поле E-main пустое"
+            password:
                 too_short: "Слишком короткий пароль"
+                blank: "Поле пароль пустое"
       already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
       confirmation_period_expired: "должен быть подтвержден в течении %{period}, пожалуйста, запросите заново"
       expired: "устарела. Пожалуйста, запросите новую"
