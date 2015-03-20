@@ -1,15 +1,12 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { :host => 'https://bestmusic.herokuapp.com' }
-  ActionMailer::Base.smtp_settings = {
-      :address        => "smtp.sendgrid.net",
-      :port           => "587",
-      :authentication => :plain,
-      :user_name      => ENV['tencet'],
-      :password       => ENV['qk35lm3932'],
-      :domain         => ENV['smtp.mandrillapp.com']
-  }
+  config.action_mailer.smtp_settings = {
+  :address   => "smtp.mandrillapp.com",
+  :port      => 25,
+  :user_name => ENV["tencet@yandex.ru"],
+  :password  => ENV["va3DEr2tBDl6ZqL1FDiJLg"]
+}
 
   # Code is not reloaded between requests.
   config.cache_classes = true
