@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+=begin
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
@@ -10,6 +11,11 @@ Rails.application.configure do
     :authentication => 'login', # Mandrill supports 'plain' or 'login'
     :domain => 'bestmusic.herokuapp.com', # your domain to identify your server when connecting
   }
+=end
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.assets.raise_runtime_errors = false
 
   # Code is not reloaded between requests.
   config.cache_classes = true
