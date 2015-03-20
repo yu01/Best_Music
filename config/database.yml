@@ -6,22 +6,16 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: tencet
-  password: qk35lm
+  encoding: utf8
+  username: tiezapngjtbkfn
+  password: 8H6Git_g1rVVDtbiEwaZfuzv5v
+  host:  	ec2-23-21-187-45.compute-1.amazonaws.com
+  sslmode: require
 
 development:
   <<: *default
-  database: music_development
+  database: dfngk2lu49c8em
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: test_development
-
-production:
-  <<: *default
-  database: production_development
