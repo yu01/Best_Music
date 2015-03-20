@@ -4,8 +4,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   :address   => "smtp.mandrillapp.com",
   :port      => 25,
-  :user_name => ENV["tencet@yandex.ru"],
-  :password  => ENV["va3DEr2tBDl6ZqL1FDiJLg"]
+  :user_name => "tencet@yandex.ru",
+  :password  => "va3DEr2tBDl6ZqL1FDiJLg"
 }
 
   # Code is not reloaded between requests.
