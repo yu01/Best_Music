@@ -1,7 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.default_url_options = { host: 'bestmusic.herokuapp.com', port: 3000 }
+config.log_formatter = ::Logger::Formatter.new
+  config.action_mailer.default_url_options = { :host => 'https://bestmusic.herokuapp.com' }
+  ActionMailer::Base.smtp_settings = {
+      :address        => "smtp.sendgrid.net",
+      :port           => "587",
+      :authentication => :plain,
+      :user_name      => ENV['tencet'],
+      :password       => ENV['qk35lm3932'],
+      :domain         => ENV['smtp.mandrillapp.com']
+  }
+  config.action_mailer.default_url_options = { host: '', port:  }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
