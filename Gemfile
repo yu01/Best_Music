@@ -10,6 +10,8 @@ gem 'devise-i18n'
 
 gem 'acts_as_votable'
 
+gem 'youtube_it'
+
 gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

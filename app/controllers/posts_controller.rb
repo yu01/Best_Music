@@ -81,7 +81,12 @@ class PostsController < ApplicationController
 
   def generateTitle(title)
      
-    words =  @post.title.split
+    client = YouTubeIt::Client.new(:dev_key => "AIzaSyAJCoJz6Tt9xnHRKTFiZpwNjjcycG0N3zA")
+
+    video = client.video_by(@post.url)
+
+
+    words =  video.title.split
 
     newtitle = ""
 
