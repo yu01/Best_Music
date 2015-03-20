@@ -1,4 +1,4 @@
-ActionMailer::Base.stmp_settings = {
+ActionMailer::Base.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 587,
     :enable_starttls_auto => true,
