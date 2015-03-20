@@ -31,7 +31,7 @@
 
 <div class="posts">
 
- <% @posts[0..10].each do |post| %>
+ <% @posts.each do |post| %>
 
   <% if post.suit && post.created_at < Time.now %>
 
@@ -43,16 +43,14 @@
       <% end %>
       </tr>
 
-      <tr><td colspan="4"><iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
+      <tr><td colspan="4"><iframe width="370" height="210" data-src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 
       <tr>
         
         <td>
         <%= post.tags %> 
         </td>
-        
-      <div class="btn-group pull-right">
-        
+
         <td>
           <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
             Палец вверх
@@ -70,7 +68,7 @@
         </td>
         
         
-      </td>
+      </tr>
 
 
     </table>
