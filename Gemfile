@@ -12,6 +12,9 @@ gem 'acts_as_votable'
 
 gem 'youtube_it'
 
+gem 'will_paginate'
+
+
 gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
