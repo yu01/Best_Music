@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require_tree .
 
+
+// Script of theme for youtube
+(function(a,b,c,d,e){var f=a+"Q";b[a]=b[a]||{};b[a][d]=b[a][d]||function(){
+(b[f]=b[f]||[]).push(arguments)};a=c.getElementsByTagName(e)[0];c=c.createElement(e);c.async=1;
+c.src="//static.reembed.com/data/scripts/g_5341_a719b8d319f142a8e63c9ce193b818e8.js";
+a.parentNode.insertBefore(c,a)})("reEmbed",window,document,"setupPlaylist","script");
+//
+
