@@ -17,6 +17,7 @@
         <%= post.tags %>
         </td>
 
+       <!--
         <% if user_signed_in? %>
         <td>
           <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
@@ -28,7 +29,6 @@
         <td>
           <%= post.get_upvotes.size %>
         </td>
-          <!--
         <td>
           <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
             Палец вниз

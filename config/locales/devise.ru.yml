@@ -2,6 +2,20 @@
 # Другие переводы на http://github.com/plataformatec/devise/wiki/I18n
 
 ru:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "уже используется"
+              blank: "поле пустое"
+              invalid: "введите e-mail"
+            password:
+                too_short: "слишком короткий"
+                blank: "поле пустое"
+            password_confirmation:
+                confirmation: "пароли не совпадают"
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты успешно подтвержден."
@@ -50,15 +64,6 @@ ru:
       send_paranoid_instructions: "Если Ваша учётная запись существует, то в течение нескольких минут Вы получите письмо с инструкциями по её разблокировке."
       unlocked: "Ваша учётная запись разблокирована. Теперь Вы вошли в систему."
   errors:
-      models:
-        user:
-          attributes:
-            email:
-              taken: "Введенный вами E-mail уже используется"
-              blank: "Поле E-main пустое"
-            password:
-                too_short: "Слишком короткий пароль"
-                blank: "Поле пароль пустое"
       already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
       confirmation_period_expired: "должен быть подтвержден в течении %{period}, пожалуйста, запросите заново"
       expired: "устарела. Пожалуйста, запросите новую"
@@ -69,4 +74,7 @@ ru:
         few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+
+
+
 
