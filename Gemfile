@@ -14,6 +14,8 @@ gem 'youtube_it'
 
 gem 'will_paginate'
 
+gem 'newrelic_rpm'
+
 
 gem 'pg'
 
