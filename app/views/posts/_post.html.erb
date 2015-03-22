@@ -2,7 +2,7 @@
   <% if post.suit && post.created_at < Time.now %>
 
     <table class="post">
-      <tr> <td colspan="2"><%= post.title %> </td>
+      <tr> <!--<td colspan="2"><%= post.title %> </td> -->
 
       <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
       <td>NEW </td>
