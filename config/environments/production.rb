@@ -1,15 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
-    :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
-    :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => "tencet@yandex.ru",
-    :password  => "va3DEr2tBDl6ZqL1FDiJLg", # SMTP password is any valid API key
-    :authentication => 'login', # Mandrill supports 'plain' or 'login'
-  }
-
   config.action_mailer.raise_delivery_errors = false
 
   config.assets.raise_runtime_errors = false

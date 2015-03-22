@@ -16,6 +16,8 @@ gem 'will_paginate'
 
 gem 'newrelic_rpm'
 
+gem "figaro"
+
 
 gem 'pg'
 

@@ -1,20 +1,15 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
+
 default: &default
   adapter: postgresql
   encoding: utf8
-  username: tiezapngjtbkfn
-  password: 8H6Git_g1rVVDtbiEwaZfuzv5v
-  host:  	ec2-23-21-187-45.compute-1.amazonaws.com
+  username: <%= ENV["HEROKU_USERNAME"] %>
+  password: <%= ENV["HEROKU_PASS"] %>
+  host:  	<%= ENV["HEROKU_HOST"] %>
   sslmode: require
 
 development:
   <<: *default
-  database: dfngk2lu49c8em
+  database: <%= ENV["HEROKU_DB"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

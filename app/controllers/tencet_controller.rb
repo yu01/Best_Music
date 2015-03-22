@@ -1,6 +1,6 @@
 class TencetController < ApplicationController
 
-  http_basic_authenticate_with name: "tencet", password: "qk35lm"
+  http_basic_authenticate_with name: ENV["ADMIN_LOGIN"], password: ENV["ADMIN_PASS"]
   
   include TencetHelper  
 
