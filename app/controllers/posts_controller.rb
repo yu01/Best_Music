@@ -80,21 +80,25 @@ class PostsController < ApplicationController
   end
 
   def generateTitle(title)
-     
-    client = YouTubeIt::Client.new(:dev_key => "AIzaSyAJCoJz6Tt9xnHRKTFiZpwNjjcycG0N3zA")
 
-    video = client.video_by(@post.url)
+    begin
+      client = YouTubeIt::Client.new(:dev_key => "AIzaSyAJCoJz6Tt9xnHRKTFiZpwNjjcycG0N3zA")
+
+      video = client.video_by(@post.url)
 
 
-    words =  video.title.split
+      words =  video.title.split
 
-    newtitle = ""
+      newtitle = ""
 
-    words.each {|word| newtitle += Unicode::capitalize(word) + " "}
+      words.each {|word| newtitle += Unicode::capitalize(word) + " "}
 
-    @post.title = newtitle
+      @post.title = newtitle
 
-    @post.title
+      @post.title
+    rescue
+      @post.title = "Error with url #{@post.url}"
+    end
 
   end
 
