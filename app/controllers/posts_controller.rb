@@ -69,7 +69,7 @@ class PostsController < ApplicationController
 
   def getpost(post)
 
-    post.title = generateTitle(post.title)
+    post.title = generateTitle(post.url)
 
     post.url = generateURL(post.url)
 
@@ -79,12 +79,12 @@ class PostsController < ApplicationController
 
   end
 
-  def generateTitle(title)
+  def generateTitle(url)
 
     begin
       client = YouTubeIt::Client.new(:dev_key => "AIzaSyAJCoJz6Tt9xnHRKTFiZpwNjjcycG0N3zA")
 
-      video = client.video_by(@post.url)
+      video = client.video_by(url)
 
 
       words =  video.title.split
@@ -93,11 +93,10 @@ class PostsController < ApplicationController
 
       words.each {|word| newtitle += Unicode::capitalize(word) + " "}
 
-      @post.title = newtitle
+      return newtitle
 
-      @post.title
     rescue
-      @post.title = "Error with url #{@post.url}"
+      return "Error with url #{@post.url}"
     end
 
   end
@@ -106,7 +105,7 @@ class PostsController < ApplicationController
 
     index = url.index('=')
 
-    if index == nil
+    if !index
 
       path = 'embed/'
 
@@ -139,7 +138,7 @@ class PostsController < ApplicationController
 
     index = title.index('-')
 
-    if index == nil
+    if !index
       return ""
     end
 
@@ -153,7 +152,7 @@ class PostsController < ApplicationController
 
     @tags = ""
 
-    if artist.tags == nil
+    if !artist.tags
       return ""
     end
 
