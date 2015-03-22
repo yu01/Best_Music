@@ -11,7 +11,12 @@ class UserController < ApplicationController
 
     @posts = @posts.where("created_at < ?", Time.now)
 
-    @posts = @posts.paginate(page: params[:page], per_page: 3)
+    @posts = @posts.paginate(page: params[:page], per_page: 2)
+
+    respond_to do |format|
+        format.html
+        format.js
+      end
 
 
   end
