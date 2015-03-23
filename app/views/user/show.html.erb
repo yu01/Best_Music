@@ -22,12 +22,6 @@
                 <div class="new-post">
                 <%= form_for Post.new do |f| %>
 
-                    <!--
-                    <div class="field">
-                      <%= f.label :Название %><br>
-                      <%= f.text_field :title, :autocomplete => :off%>
-                    </div>-->
-
                     <div class="field">
                       <%= f.label :Ссылка_youtube %><br>
                       <%= f.text_field :url, :autocomplete => :off %>
@@ -36,6 +30,14 @@
                     <div class="actions">
                       <%= f.submit "OK"%>
                     </div>
+                    </table>
+
+                    <h3>
+                    <% flash.each do |name, msg| %>
+                      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+                    <% end %>
+                    </h3>
+
                 <% end %>
 
                 </div>
