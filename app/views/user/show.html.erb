@@ -13,25 +13,38 @@
 -->
 
 
-<div class="new-post">
-    <%= form_for Post.new do |f| %>
+  <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>Best Music</h1>
+                <h2>Добавь свою любимую музыку</h2>
 
-      <!--
-      <div class="field">
-        <%= f.label :Название %><br>
-        <%= f.text_field :title, :autocomplete => :off%>
-      </div>-->
+                <div class="new-post">
+                <%= form_for Post.new do |f| %>
 
-      <div class="field">
-        <%= f.label :Ссылка_youtube %><br>
-        <%= f.text_field :url, :autocomplete => :off %>
-      </div>
+                    <!--
+                    <div class="field">
+                      <%= f.label :Название %><br>
+                      <%= f.text_field :title, :autocomplete => :off%>
+                    </div>-->
 
-      <div class="actions">
-        <%= f.submit "OK"%>
-      </div>
-<% end %>
-</div>
+                    <div class="field">
+                      <%= f.label :Ссылка_youtube %><br>
+                      <%= f.text_field :url, :autocomplete => :off %>
+                    </div>
+
+                    <div class="actions">
+                      <%= f.submit "OK"%>
+                    </div>
+                <% end %>
+
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
 
 <div id="posts">
   <%= render @posts %>
