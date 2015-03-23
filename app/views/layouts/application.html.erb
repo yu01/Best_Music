@@ -10,6 +10,20 @@
 
 <body>
 
+  <!--
+<% if user_signed_in? %>
+  <ul>
+    <li><%= link_to 'Настройки', edit_user_registration_path %></li>
+    <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
+    <li><%= link_to 'Войти', new_user_session_path %></li>
+  </ul>
+<% end %>
+-->
+
   <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -49,7 +63,6 @@
   
     <div class="container">
       <%= yield %>
-    </div>
 
 <!-- Footer -->
       <footer>
@@ -59,6 +72,7 @@
               </div>
           </div>
       </footer>
+  </div>
 
 </body>
 </html>
