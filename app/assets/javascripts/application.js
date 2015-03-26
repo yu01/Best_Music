@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap.min
 
 $(document).ready(function() {
   if ($('.pagination').length) {

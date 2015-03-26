@@ -1,44 +1,55 @@
 
   <% if post.suit && post.created_at < Time.now %>
 
-    <table class="post">
-      <tr> <!--<td colspan="2"><%= post.title %> --></td>
 
-      <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
-      <td>NEW </td>
-      <% end %>
-      </tr>
+    <div class="post-body">
 
-      <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 
-      <tr>
+            <h2 class="featurette-heading"> <%= post.title%>
+            </h2>
+      <table class="post">
+          <tr>
 
-        <td>
-        <%= post.tags %>
-        </td>
-
-       <!--
-        <% if user_signed_in? %>
-        <td>
-          <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-            Палец вверх
+          <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+          <td>NEW </td>
           <% end %>
-        </td>
-        <%end%>
+          </tr>
 
-        <td>
-          <%= post.get_upvotes.size %>
-        </td>
-        <td>
-          <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-            Палец вниз
-          <% end %>
-        </td> -->
+          <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
+
+          <tr>
+
+            <td class="lead">
+            <%= post.tags %>
+            </td>
+
+           <!--
+            <% if user_signed_in? %>
+            <td>
+              <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+                Палец вверх
+              <% end %>
+            </td>
+            <%end%>
+
+            <td>
+              <%= post.get_upvotes.size %>
+            </td>
+            <td>
+              <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+                Палец вниз
+              <% end %>
+            </td> -->
 
 
-      </tr>
+          </tr>
 
 
-    </table>
+        </table>
+    </div>
+
+
+
+    <hr class="featurette-divider">
 
   <% end %>
