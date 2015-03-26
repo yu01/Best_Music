@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = getpost(@post)
 
   end
 
@@ -155,7 +154,12 @@ class PostsController < ApplicationController
       return ""
     end
 
-    artist.tags[0..2].each { |tag| @tags += tag + ", " }
+    artist.tags[0..2].each do |tag|
+       tag.split.each do |word|
+          @tags += Unicode::capitalize(word)+ " "
+        end
+        @tags += ", "
+    end
 
     @tags.chop.chop
 
