@@ -93,6 +93,11 @@ footer {
   margin-right: auto;
 }
 
+.tags
+{
+  padding: 10px 0px 0px 30px;
+}
+
 
 @media(max-width:1200px) {
     .headline h1 {
