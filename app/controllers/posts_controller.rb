@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   http_basic_authenticate_with name: ENV["ADMIN_LOGIN"]  , password: ENV["ADMIN_PASS"], except: [:create, :upvote, :downvote]
-  @posts = Post.order(:updated_at).reverse_order
 
   def index
 
@@ -22,7 +21,7 @@ class PostsController < ApplicationController
   def uniqie (post)
     @posts = Post.order(:updated_at).reverse_order
 
-    old_post = @posts.find{|p| p.title == post.title}
+    old_post = @posts.find{|p| p.url == post.url}
 
     if old_post
       return Time.now > old_post.updated_at + 60 * 60 * 24 * 30 * 6
@@ -32,7 +31,9 @@ class PostsController < ApplicationController
 
     end
 
+
   end
+
 
   def create
 
@@ -154,14 +155,25 @@ class PostsController < ApplicationController
       return ""
     end
 
-    artist.tags[0..2].each do |tag|
-       tag.split.each do |word|
-          @tags += Unicode::capitalize(word)+ " "
-        end
-        @tags += ", "
-    end
+    begin
 
-    @tags.chop.chop
+      artist.tags.each do |tag|
+           tag.split.each do |word|
+              @tags += Unicode::capitalize(word)+ " "
+            end
+            @tags = @tags.chop
+            @tags += ", "
+      end
+
+      @tags = @tags.chop.chop
+
+      return @tags
+
+    rescue
+
+      return ""
+
+    end
 
   end
 
