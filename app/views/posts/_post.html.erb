@@ -1,10 +1,10 @@
 
   <% if post.suit && post.created_at < Time.now %>
 
+  <div class="post-main">
 
+    <h2 class="featurette-heading"> <%= post.title%> </h2>
 
-            <h2 class="featurette-heading"> <%= post.title%>
-            </h2>
     <div class="post-body">
 
       <table class="post">
@@ -17,39 +17,16 @@
 
           <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 
-          <tr>
+      </table>
+    </div>
 
-            <td class="lead tags">
-              <%= post.tags %>
-            </td>
-
-           <!--
-            <% if user_signed_in? %>
-            <td>
-              <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-                Палец вверх
-              <% end %>
-            </td>
-            <%end%>
-
-            <td>
-              <%= post.get_upvotes.size %>
-            </td>
-            <td>
-              <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-                Палец вниз
-              <% end %>
-            </td> -->
-
-
-          </tr>
-
-
-        </table>
+    <div class="lead post-tags">
+      <%= post.tags %>
     </div>
 
 
-
     <hr class="featurette-divider">
+
+  </div>
 
   <% end %>
