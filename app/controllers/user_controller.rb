@@ -5,6 +5,9 @@ class UserController < ApplicationController
   end
 
   def show
+
+    @footer_off = true
+
     @posts = Post.order(:updated_at).reverse_order
 
     @posts = @posts.where("suit = true")
@@ -16,7 +19,8 @@ class UserController < ApplicationController
     respond_to do |format|
         format.html
         format.js
-      end
+    end
+
 
 
   end
