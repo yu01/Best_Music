@@ -7,13 +7,11 @@
               <div class="new-post">
               <%= form_for Post.new do |f| %>
 
-                  <div class="field">
-                    <%= f.label :Ссылка_youtube %><br>
-                    <%= f.text_field :url, :autocomplete => :off %>
-                  </div>
+                  <div class="post-field">
+                    <h3 ><%= f.label :Ссылка_youtube %></h3>
+                    <%= f.text_field :url, :autocomplete => :off, :size => "30"%>
 
-                  <div class="actions">
-                    <%= f.submit "OK"%>
+                    <%= f.submit "OK", :class => "post-field-button"%>
                   </div>
 
                   <% if !flash.empty? %>
