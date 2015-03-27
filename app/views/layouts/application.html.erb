@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.png"/>
 
 </head>
 
@@ -37,21 +38,40 @@
                 </button>
                 <a class="navbar-brand" href="#">Наверх</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling
+
+            <% if controller_name == "user" %>
+            <!-- Collect the nav links, forms, and other content for toggling-->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#about"></a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="#services"></a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="#contact"></a>
                     </li>
                 </ul>
             </div>
-            -->
+            <% end %>
+
+           <% if controller_name == "tencet" %>
+            <!-- Collect the nav links, forms, and other content for toggling-->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                      <%=link_to "Новые записи", controller: "tencet", action: "index"%>
+                    </li>
+                    <li>
+                       <%=link_to "Все записи", controller: "tencet", action: "all"%>
+                    </li>
+                    <li>
+                       <%=link_to "Статистика", controller: "tencet", action: "statistic"%>
+                    </li>
+                </ul>
+            </div>
+            <% end %>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -61,7 +81,7 @@
 
       <%= yield %>
 
-<% if @footer_off.nil? %>
+<% if @footer_off.nil? && controller_name == "user" %>
 <!-- Footer -->
       <footer>
           <div class="row">

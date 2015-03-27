@@ -33,4 +33,8 @@ class TencetController < ApplicationController
     @posts = Post.order(:updated_at).reverse_order
 
   end
+
+  def statistic
+
+  end
 end

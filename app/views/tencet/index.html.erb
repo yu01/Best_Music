@@ -1,55 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="admin">
 
-<!--<iframe width="560" height="315" src="http://www.youtube.com/embed/bmXumtgwtak?rel=0" frameborder="0" allowfullscreen></iframe>-->
+  <p id="notice"><%= notice %></p>
 
-  <h1> ADMIN </h1>
+  <!--<iframe width="560" height="315" src="http://www.youtube.com/embed/bmXumtgwtak?rel=0" frameborder="0" allowfullscreen></iframe>-->
 
-  <% if @countPosts != 0 %>
-    <h2> Количество постов: <%= @countPosts %></h2>
-  <% end %>
+   <% @posts.each do |post| %>
 
-    <h2> Количество постов за сегодня: <%= @countPostsDay %></h2>
+      <% if !post.suit || getDate(post) != ""%>
 
+      <div class="post-main">
 
- <% @posts.each do |post| %>
+        <div class="admin-featurette-heading">
 
-    <% if !post.suit || getDate(post) != ""%>
-
-    <table class="post">
-      <tr> 
-          <td colspan="3"><%= post.title %> </td>
-          <td><%= getDate(post) %> </td>
+          <h2> <%= post.title%> </h2>
 
           <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
-          <td>NEW </td>
+             <div class="admin-post-new"> New </div>
           <% end %>
           
-      </tr>
+          <%= getDate(post) %>
 
-      <tr><td colspan="5"><iframe width="370" height="210" src= "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
+        </div>
 
-     <tr> <td colspan="4"> <%= post.tags %> </td>
-
-      <td><%= post.vote %> </td> </tr>
+      <div class="admin-post-body">
 
 
-      <tr>
+            <tr><td colspan="4"><iframe width="370" height="276" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
+
+        </table>
+      </div>
+
+      <div class="lead admin-post-tags">
+        <%= post.tags %>
+      </div>
         
-       
-         <% if !post.suit %>
-           <td> <%= link_to "OK", suit_post_path(post), method: :put %></td> 
-         <% end %>
+        <div class="admin-post-conrolls">
+           <% if !post.suit %>
+              <%= link_to "OK", suit_post_path(post), method: :put %>
+           <% end %>
 
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "+Day", day_post_path(post), method: :put %></td> 
-        <td><%= link_to "+New", toNew_post_path(post), method: :put %></td>
-  
-      </tr>
+         <%= link_to 'Edit', edit_post_path(post) %></td>
+          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to "+Day", day_post_path(post), method: :put %>
+         <%= link_to "+New", toNew_post_path(post), method: :put %>
+        </div>
 
-    </table>
+      <hr class="admin-featurette-divider">
 
-  <% end %>
+    </div>
 
- <% end %>
+    <% end %>
+
+   <% end %>
+
+</div>
+
 

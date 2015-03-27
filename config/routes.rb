@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   get '/show', to:'user#show'
 
+  get 'tencet/all'
+
+  get 'tencet/statistic'
+
   get '/admin', to:'tencet#index'
 
   resources :posts do
