@@ -8,12 +8,11 @@
     <div class="post-body">
 
       <table class="post">
-          <tr>
-
           <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+          <tr>
           <td>NEW </td>
-          <% end %>
           </tr>
+          <% end %>
 
           <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
 

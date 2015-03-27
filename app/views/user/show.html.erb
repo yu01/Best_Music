@@ -1,56 +1,37 @@
-<!--
-<% if user_signed_in? %>
-  <ul>
-    <li><%= link_to 'Настройки', edit_user_registration_path %></li>
-    <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
-  </ul>
-<% else %>
-  <ul>
-    <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
-    <li><%= link_to 'Войти', new_user_session_path %></li>
-  </ul>
-<% end %>
--->
+<header class="header-image">
+      <div class="headline">
+          <div class="container">
+              <h1>Best Music</h1>
+              <h2>Добавь свою любимую музыку</h2>
 
+              <div class="new-post">
+              <%= form_for Post.new do |f| %>
 
-  <header class="header-image">
-        <div class="headline">
-            <div class="container">
-                <h1>Best Music</h1>
-                <h2>Добавь свою любимую музыку</h2>
+                  <div class="field">
+                    <%= f.label :Ссылка_youtube %><br>
+                    <%= f.text_field :url, :autocomplete => :off %>
+                  </div>
 
-                <div class="new-post">
-                <%= form_for Post.new do |f| %>
+                  <div class="actions">
+                    <%= f.submit "OK"%>
+                  </div>
 
-                    <div class="field">
-                      <%= f.label :Ссылка_youtube %><br>
-                      <%= f.text_field :url, :autocomplete => :off %>
-                    </div>
-
-                    <div class="actions">
-                      <%= f.submit "OK"%>
-                    </div>
-                    </table>
-
+                  <% if !flash.empty? %>
                     <h3>
                     <% flash.each do |name, msg| %>
                       <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
                     <% end %>
                     </h3>
+                  <% end %>
 
-                <% end %>
-
-                </div>
-
-
-            </div>
+              <% end %>
+          </div>
         </div>
-    </header>
+    </div>
+</header>
 
 
 <div id="posts">
   <%= render @posts %>
 </div>
 <%= will_paginate @posts %>
-
-
