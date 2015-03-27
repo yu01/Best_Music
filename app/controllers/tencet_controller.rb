@@ -5,7 +5,17 @@ class TencetController < ApplicationController
   include TencetHelper  
 
   def index
-    @posts = Post.order(:created_at)
+     @posts = Post.order(:created_at)
+
+     @posts = @posts.where("suit = false")
+
+    @posts = @posts.paginate(page: params[:page], per_page: 2)
+
+    respond_to do |format|
+        format.html
+        format.js
+    end
+
 
     @countPosts = 0
 
@@ -31,6 +41,17 @@ class TencetController < ApplicationController
 
   def all
     @posts = Post.order(:updated_at).reverse_order
+
+    @posts = @posts.where("suit = true")
+
+    @posts = @posts.where("created_at < ?", Time.now)
+
+    @posts = @posts.paginate(page: params[:page], per_page: 2)
+
+    respond_to do |format|
+        format.html
+        format.js
+    end
 
   end
 
