@@ -1,8 +1,7 @@
 # Best Music
 
 ## About
-This is my first project deployed by rails. 
-I used some gems and cool features.
+This is my project deployed by rails. 
 
 Try it. Add a cool music youtube video and it appears in the general page. 
 
