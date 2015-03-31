@@ -25,4 +25,8 @@ class UserController < ApplicationController
 
   end
 
+  def about
+
+  end
+
 end

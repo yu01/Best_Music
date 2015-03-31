@@ -23,6 +23,10 @@ body {
   margin-top:50px;
 }
 
+.navbar-nav{
+ font-size: 18px;
+}
+
 .header-image {
     margin-top: 30px;
     margin-bottom: 60px;
@@ -111,6 +115,12 @@ footer {
   text-align: center;
 
   margin-bottom: 40px;
+}
+
+.pagination{
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 

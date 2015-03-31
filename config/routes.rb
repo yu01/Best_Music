@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/show', to:'user#show'
 
+  get 'user/about'
+
   get 'tencet/all'
 
   get 'tencet/statistic'
