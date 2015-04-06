@@ -5,11 +5,12 @@
               <h2>Добавь свою любимую музыку</h2>
 
               <div class="new-post">
-              <%= form_for Post.new do |f| %>
+              <% @post = Post.new %>
+              <%= form_for @post  do |f| %>
 
                   <div class="post-field">
                     <h3 ><%= f.label :Ссылка_youtube %></h3>
-                    <%= f.text_field :url, :autocomplete => :off, :size => "30"%>
+                    <%= f.text_field :url, :autocomplete => :off, :size => "30", :placeholder => "URL"%>
 
                     <%= f.submit "OK", :class => "post-field-button"%>
                   </div>
@@ -22,6 +23,8 @@
                     </h3>
                   <% end %>
 
+                 <%= @post.url%>
+
               <% end %>
           </div>
         </div>
@@ -30,6 +33,6 @@
 
 
 <div id="posts">
-  <%= render @posts %>
+  <%= render @posts%>
 </div>
 <%= will_paginate @posts %>

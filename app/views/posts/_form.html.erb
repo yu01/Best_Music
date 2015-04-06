@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size => "30", :class => "form-control"   %>
   </div>
 
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, :size => "30", :class => "form-control"    %>
   </div>
 
   <div class="field">
     <%= f.label :tags %><br>
-    <%= f.text_field :tags %>
+    <%= f.text_field :tags, :size => "30", :class => "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :suit %><br>
-    <%= f.check_box :suit %>
+    <%= f.label :suit, :class => "edit-check-box-label" %>
+    <%= f.check_box :suit, :class => "edit-check-box"%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-default edit-submit"    %>
   </div>
+
 <% end %>

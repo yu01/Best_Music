@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   get 'user/about'
 
-  get 'tencet/all'
-
-  get 'tencet/statistic'
-
   get '/admin', to:'tencet#index'
+
+  get '/admin/all', to:'tencet#all'
+
+  get '/admin/statistic', to:'tencet#statistic'
 
   resources :posts do
     put :suit, on: :member
