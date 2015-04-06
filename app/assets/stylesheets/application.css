@@ -110,6 +110,11 @@ footer {
     .featurette-heading {
         font-size: 35px;
     }
+
+
+    .post-url{
+      width: 440px;
+    }
 }
 
 @media(max-width:991px) {
@@ -140,6 +145,11 @@ footer {
     .featurette-heading {
         font-size: 30px;
     }
+
+
+    .post-url{
+      width: 400px;
+    }
 }
 
 @media(max-width:768px) {
@@ -153,6 +163,11 @@ footer {
 
     .featurette-heading {
         font-size: 25px;
+    }
+
+
+    .post-url{
+      width: 340px;
     }
 }
 
@@ -168,6 +183,11 @@ footer {
     .featurette-divider {
         margin: 30px 0;
     }
+
+
+    .post-url{
+      width: 340px;
+    }
 }
 
 @media(max-width:640px) {
@@ -180,14 +200,19 @@ footer {
     }
 
     .headline h2 {
-        font-size: 30px;
+        font-size: 25px;
+    }
+
+    .post-url{
+      width: 300px;
     }
 }
 
-@media(max-width:375px) {
+@media(max-width:360px) {
     .featurette-divider {
         margin: 10px 0;
     }
+
 
     .featurette-image {
         max-width: 100%;
