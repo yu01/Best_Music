@@ -1,36 +1,30 @@
 <header class="header-image">
-      <div class="headline">
-          <div class="container">
-              <h1>Best Music</h1>
-              <h2>Добавь свою любимую музыку</h2>
-
-              <div class="new-post">
-              <% @post = Post.new %>
-              <%= form_for @post  do |f| %>
-
-                  <div class="post-field">
-                    <h3 ><%= f.label :Ссылка_youtube %></h3>
-                    <%= f.text_field :url, :autocomplete => :off, :class => "post-url", :placeholder => "URL"%>
-
-                    <%= f.submit "OK", :class => "post-field-button"%>
-                  </div>
-
-                  <% if !flash.empty? %>
-                    <h3>
-                    <% flash.each do |name, msg| %>
-                      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-                    <% end %>
-                    </h3>
-                  <% end %>
-
-                 <%= @post.url%>
-
-              <% end %>
+  <div class="headline">
+    <div class="container">
+      <h1>Best Music</h1>
+      <h2>Добавь свою любимую музыку</h2>
+      <div class="new-post">
+        <% @post = Post.new %>
+        <%= form_for @post  do |f| %>
+          <div class="post-field">
+            <h3 ><%= f.label :Ссылка_youtube %></h3>
+            <%= f.text_field :url, :autocomplete => :off, :class => "post-url", :placeholder => "URL"%>
+            <%= f.submit "OK", :class => "post-field-button"%>
           </div>
-        </div>
-    </div>
-</header>
 
+          <% if !flash.empty? %>
+            <h3>
+              <% flash.each do |name, msg| %>
+                <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+              <% end %>
+            </h3>
+          <% end %>
+          <%= @post.url%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
 
 <div id="posts">
   <%= render @posts%>

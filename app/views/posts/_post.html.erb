@@ -1,121 +1,80 @@
 <% if controller_name == "user" %>
-
-    <% if post.suit && post.created_at < Time.now %>
-
+  <% if post.suit && post.created_at < Time.now %>
     <div class="post-main">
-
       <h2 class="featurette-heading"> <%= post.title%> </h2>
-
       <div class="post-body">
-
         <table class="post">
-            <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+          <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
             <tr>
-            <td>NEW </td>
-            </tr>
-            <% end %>
-
-            <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
-
+              <td>NEW </td>
+              </tr>
+          <% end %>
+          <tr>
+            <td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td>
+          </tr>
         </table>
       </div>
-
       <div class="lead post-tags">
         <%= post.tags %>
       </div>
-
-
       <hr class="featurette-divider">
-
     </div>
-
   <% end %>
-
 <% end %>
 
 <% if controller_name == "tencet" && action_name == "index"%>
-
-      <div class="post-main">
-
-        <div class="admin-featurette-heading">
-
-          <h2> <%= post.title%> </h2>
-
-          <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
-             <div class="admin-post-new"> New </div>
-          <% end %>
-
-          <%= getDate(post) %>
-
-        </div>
-
-      <div class="admin-post-body">
-
-
-            <tr><td colspan="4"><iframe width="370" height="276" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
-
-        </table>
-      </div>
-
-      <div class="lead admin-post-tags">
-        <%= post.tags %>
-      </div>
-
-        <div class="admin-post-conrolls">
-           <% if !post.suit %>
-              <%= link_to "OK", suit_post_path(post), method: :put %>
-           <% end %>
-
-         <%= link_to 'Edit', edit_post_path(post) %></td>
-          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to "+Day", day_post_path(post), method: :put %>
-         <!-- <%= link_to "+New", toNew_post_path(post), method: :put %>-->
-
-        </div>
-
-      <hr class="admin-featurette-divider">
-
+  <div class="post-main">
+    <div class="admin-featurette-heading">
+      <h2> <%= post.title%> </h2>
+      <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+        <div class="admin-post-new"> New </div>
+      <% end %>
+      <%= getDate(post) %>
     </div>
-
-
-
-
- <% elsif controller_name == "tencet" && action_name == "all" %>
-
-
-
-    <div class="post-main">
-
-      <h2 class="featurette-heading"> <%= post.title%> </h2>
-
-      <div class="post-body">
-
-        <table class="post">
-            <%if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
-            <tr>
+    <div class="admin-post-body">
+      <table>
+        <tr>
+          <td colspan="4"><iframe width="370" height="276" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td>
+        </tr>
+      </table>
+    </div>
+    <div class="lead admin-post-tags">
+      <%= post.tags %>
+    </div>
+    <div class="admin-post-conrolls">
+      <% if !post.suit %>
+        <%= link_to "OK", suit_post_path(post), method: :put %>
+      <% end %>
+      <%= link_to 'Edit', edit_post_path(post) %></td>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "+Day", day_post_path(post), method: :put %>
+    </div>
+    <hr class="admin-featurette-divider">
+  </div>
+<% elsif controller_name == "tencet" && action_name == "all" %>
+  <div class="post-main">
+    <h2 class="featurette-heading"> <%= post.title%> </h2>
+    <div class="post-body">
+      <table class="post">
+        <% if post.isNew && post.created_at + 60 * 60 * 24 * 15 > Time.now %>
+          <tr>
             <td>NEW </td>
-            </tr>
-            <% end %>
-
-            <tr><td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td> </tr>
-
-        </table>
-      </div>
-
-      <div class="lead post-tags">
-        <%= post.tags %>
-      </div>
-
-      <div class="admin-post-conrolls">
-
-         <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-
-
-      <hr class="featurette-divider">
-
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="4"><iframe width="555" height="415" src = "<%= post.url %>"  frameborder="0" allowfullscreen></iframe></td>
+        </tr>
+      </table>
     </div>
 
+    <div class="lead post-tags">
+      <%= post.tags %>
+    </div>
 
+    <div class="admin-post-conrolls">
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <hr class="featurette-divider">
+  </div>
 <% end %>
